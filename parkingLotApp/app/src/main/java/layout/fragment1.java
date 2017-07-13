@@ -18,7 +18,7 @@ public class fragment1 extends Fragment {
                              Bundle savedInstanceState) {
 
         View view  = inflater.inflate(R.layout.fragment_fragment1, container, false);
-        String time = (String) DateFormat.format("dd/MM/yyyy \n kk:mm", System.currentTimeMillis());
+        String time = (String) DateFormat.format("dd/MM/\n kk:mm", System.currentTimeMillis());
         TextView buffer = (TextView)view.findViewById(R.id.time1);
         buffer.setText(time);
         /*GridView gridView = (GridView) view.findViewById(R.id.parkinglot_grid);
@@ -45,12 +45,7 @@ public class fragment1 extends Fragment {
         return view;*/
         return view;
     }
-    public void wtfwtfwtf() {
-        String time = (String) DateFormat.format("dd/MM/yyyy kk:mm", System.currentTimeMillis());
-        TextView buffer = (TextView)getView().findViewById(R.id.time1);
-        buffer.setText(time);
 
-    }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
