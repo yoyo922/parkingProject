@@ -6,13 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
 
-import layout.fragment1;
 import layout.fragment2;
+import layout.fragment1;
 import layout.fragment3;
 import layout.fragment4;
 import layout.fragment5;
@@ -26,11 +22,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
         String username = "peter";
         String password = "password";
+        Fragment defaultFrag = new fragment1();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_place,defaultFrag);
+        transaction.commit();
     }
+
 
     public void changeFragment(View view) {
         Fragment fragment;
-        Fragment oldFrag;
 
         if (view == findViewById(R.id.button1)) {
             fragment = new fragment1();

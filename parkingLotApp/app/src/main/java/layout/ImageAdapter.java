@@ -71,5 +71,3 @@ public class ImageAdapter extends BaseAdapter{
             R.drawable.car1,
     };
 }
-
-

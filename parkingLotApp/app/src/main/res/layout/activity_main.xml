@@ -81,11 +81,12 @@
             android:onClick="changeFragment" />
     </LinearLayout>
     </HorizontalScrollView>
-    <fragment
+    <FrameLayout
         android:name="layout.fragment1"
         android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragment_place"
+        android:background ="@android:color/white"
         tools:layout="@layout/fragment_fragment1" />
 </FrameLayout>
