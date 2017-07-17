@@ -10,8 +10,6 @@ import android.view.View;
 import layout.fragment2;
 import layout.fragment1;
 import layout.fragment3;
-import layout.fragment4;
-import layout.fragment5;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,22 +48,6 @@ public class MainActivity extends AppCompatActivity {
         }
         if (view == findViewById(R.id.button3)) {
             fragment = new fragment3();
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_place,fragment);
-            ft.addToBackStack(null);
-            ft.commit();
-        }
-        if (view == findViewById(R.id.button4)) {
-            fragment = new fragment4();
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_place,fragment);
-            ft.addToBackStack(null);
-            ft.commit();
-        }
-        if (view == findViewById(R.id.button5)) {
-            fragment = new fragment5();
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             ft.replace(R.id.fragment_place,fragment);

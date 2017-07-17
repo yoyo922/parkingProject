@@ -7,50 +7,282 @@
 
 
     <!-- TODO: Update blank fragment layout -->>
-
     <LinearLayout
-        android:layout_width = "fill_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:weightSum = "6"
-        android:gravity="center"
-        >
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="1"
-            android:background="@color/white" />
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:text="2"
-            android:layout_weight="1"
-            android:background="@color/white" />
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:text="3"
-            android:layout_weight="1"
-            android:background="@color/white" />
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:text="4"
-            android:layout_weight="1"
-            android:background="@color/white" />
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:text="5"
-            android:layout_weight="1"
-            android:background="@color/white" />
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:text="6"
-            android:layout_weight="1"
-            android:background="@color/white" />
-    </LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Detailed View"
+        android:gravity="center">
+    </TextView>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Parking Lot ID"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Occupied"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Arrial Time"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Purchased Time"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Leaving Time"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                </TableRow>
+                <TableRow
+                    android:padding="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="1"
+                        android:textSize="10sp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/white" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Yes"
+                        android:textSize="10sp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/white" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="5:00 am"
+                        android:textSize="10sp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/white" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="2:00 H"
+                        android:textSize="10sp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/white" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="7:00 am"
+                        android:textSize="10sp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@color/white" />
+                </TableRow>
+            <TableRow
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="2"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="No"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="N/A"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="N/A"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="N/A"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+            </TableRow>
+            <TableRow
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="3"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Yes"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="7:43 pm"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="1:00 H"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="8:43 pm"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+            </TableRow>
+            <TableRow
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="3"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Yes"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="12:12 pm"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="3:00 h"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="3:12pm"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+            </TableRow>
+            <TableRow
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="4"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="No"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="N/A"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="N/A"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="N/A"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@color/white" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
 </FrameLayout>
