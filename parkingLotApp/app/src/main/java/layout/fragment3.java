@@ -1,9 +1,14 @@
 package layout;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +21,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.peter.parkinglotapp.R;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -50,12 +56,13 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
     View mView;
     private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
     private static final String API_KEY = "AIzaSyDiwNIP2MDIOgnWHtgFrQb_GmDJHsDBMjY";
-    private String origin = "Guelph";
-    private String destination = "Toronto";
+    private String destination = "43.530660,-80.228900";
     private List<Polyline> polylinePaths = new ArrayList<>();
     private List<Marker> originMarkers = new ArrayList<>();
     private List<Marker> destinationMarkers = new ArrayList<>();
-
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+    private String currentLocation;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,13 +75,39 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
                 sendRequest();
             }
         });
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        Location buffLocation = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+        currentLocation = buffLocation.getLatitude() + "," + buffLocation.getLongitude();
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                currentLocation = location.getLatitude() + "," + location.getLongitude();
+                System.out.println(currentLocation);
+            }
+
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String s) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String s) {
+
+            }
+        };
+        System.out.println("WTF");
+        System.out.println(currentLocation);
+        locationManager.requestLocationUpdates("gps",5000,0,locationListener);
         return mView;
     }
     public void sendRequest(){
-        String origin = "43.520988,-80.245368";
-        String parkingLot = "43.530660,-80.228900";
-
         try {
+            System.out.println(createUrl());
             new DownloadData().execute(createUrl());
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -82,11 +115,9 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
 
     }
 
-    private String createUrl() throws UnsupportedEncodingException {
-        String urlOrigin = URLEncoder.encode(origin, "utf-8");
-        String urlDestination = URLEncoder.encode(destination, "utf-8");
+    private String createUrl() throws UnsupportedEncodingException {;
 
-        return DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + API_KEY;
+        return DIRECTION_URL_API + "origin=" + currentLocation + "&destination=" + destination + "&key=" + API_KEY;
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
@@ -114,7 +145,6 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
        }
         @Override
         protected void onPostExecute(String res) {
-            System.out.println(res);
             try {
                 parseJSON(res);
             } catch (JSONException e){
