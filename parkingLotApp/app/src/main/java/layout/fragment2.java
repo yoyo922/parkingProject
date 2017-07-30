@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.peter.parkinglotapp.R;
+import com.example.peter.parkinglotapp.R;;
 
-public class fragment2 extends Fragment {
+import java.util.HashMap;
+
+public class fragment2 extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
