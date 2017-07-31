@@ -78,6 +78,7 @@
                 android:weightSum="6"
                 >
                 <ImageButton
+                    android:id="@+id/imageCar1"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
@@ -86,6 +87,7 @@
                     android:padding="10dp"
                     />
                 <ImageButton
+                    android:id="@+id/imageCar2"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
@@ -94,6 +96,7 @@
                     android:padding="10dp"
                     />
                 <ImageButton
+                    android:id="@+id/imageCar3"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
@@ -102,6 +105,7 @@
                     android:padding="10dp"
                     />
                 <ImageButton
+                    android:id="@+id/imageCar4"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
@@ -110,6 +114,7 @@
                     android:padding="10dp"
                     />
                 <ImageButton
+                    android:id="@+id/imageCar5"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
@@ -118,6 +123,7 @@
                     android:padding="10dp"
                     />
                 <ImageButton
+                    android:id="@+id/imageCar6"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
