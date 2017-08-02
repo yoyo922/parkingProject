@@ -78,7 +78,7 @@ public class fragment1 extends Fragment {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
                 System.out.println(lotId + isOccupied);
                 String data = URLEncoder.encode("lotId","UTF-8") + "=" + URLEncoder.encode(lotId,"UTF-8") + "&"
-                        + URLEncoder.encode("isOcupied","UTF-8") + "=" + URLEncoder.encode(isOccupied,"UTF-8");
+                        + URLEncoder.encode("isOccupied","UTF-8") + "=" + URLEncoder.encode(isOccupied,"UTF-8");
                 System.out.println("THE DATA IS" + data);
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
