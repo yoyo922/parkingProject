@@ -1,5 +1,6 @@
 package layout;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.peter.parkinglotapp.MainActivity;
 import com.example.peter.parkinglotapp.R;
 
 import java.io.BufferedReader;
@@ -35,7 +38,14 @@ public class fragment1 extends Fragment {
         String time = (String) DateFormat.format("dd/MM\nkk:mm", System.currentTimeMillis());
         TextView buffer = (TextView) view.findViewById(R.id.time1);
         buffer.setText(time);
-        updateDatabase();
+        ImageButton iButton1 = (ImageButton) view.findViewById(R.id.imageCar1);
+        iButton1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),popup.class));
+                updateDatabase();
+            }
+        });
         return view;
     }
 

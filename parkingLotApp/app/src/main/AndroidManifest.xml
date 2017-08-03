@@ -18,6 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="layout.popup"
+                  android:theme="@style/AppTheme.CustomTheme">
+        </activity>
 
         <!-- Maps Android Key-->
         <meta-data
