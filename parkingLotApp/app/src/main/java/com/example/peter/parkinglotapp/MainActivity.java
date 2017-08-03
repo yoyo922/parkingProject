@@ -1,5 +1,7 @@
 package com.example.peter.parkinglotapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +14,7 @@ import layout.fragment1;
 import layout.fragment3;
 
 public class MainActivity extends AppCompatActivity {
-
+    String popResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +27,17 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.fragment_place,defaultFrag);
         transaction.commit();
     }
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        System.out.println("RESULT??????????@@@@@@@@@@@@@@@@@@@");
+        super.onActivityResult(requestCode,resultCode,data);
+        if (requestCode == 1){
+            if (resultCode == Activity.RESULT_OK){
+                popResult = data.getStringExtra("result");
+            }
+        }
+    }
 
     public void changeFragment(View view) {
         Fragment fragment;

@@ -13,8 +13,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id ="@+id/purTime"
         android:text = "Enter purchased Time"
         android:gravity="center"
         android:layout_weight="1"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id ="@+id/doneButton"
+        android:text ="Done"/>
 </LinearLayout>
