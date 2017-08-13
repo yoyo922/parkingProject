@@ -6,7 +6,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text = "Reserve this spot"
+        android:text = "Reserve"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:layout_weight="1"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text = "Enter purchased Time"
         android:gravity="center"
         android:layout_weight="1"
         />
@@ -14,10 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id ="@+id/purTime"
-        android:text = "Enter purchased Time"
         android:gravity="center"
         android:layout_weight="1"
         />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"

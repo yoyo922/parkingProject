@@ -4,18 +4,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.peter.parkinglotapp.MainActivity;
 import com.example.peter.parkinglotapp.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -28,86 +35,127 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class fragment1 extends Fragment {
     String popResult;
+    ImageButton iButton1;
+    ImageButton iButton2;
+    ImageButton iButton3;
+    ImageButton iButton4;
+    ImageButton iButton5;
+    ImageButton iButton6;
+    public static int[] occArray;
+    public static String[] timeArray;
+    public static ImageButton[] buttonArray;
+    public static TextView[] timeViews;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragment1, container, false);
-        String time = (String) DateFormat.format("dd/MM\nkk:mm", System.currentTimeMillis());
-        TextView buffer = (TextView) view.findViewById(R.id.time1);
-        buffer.setText(time);
-        ImageButton iButton1 = (ImageButton) view.findViewById(R.id.imageCar1);
+        iButton1 = (ImageButton) view.findViewById(R.id.imageCar1);
         iButton1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-                String currentDateTimeString = format.format(new Date());
-                System.out.println(currentDateTimeString);
                 Intent pop =  new Intent(getActivity(),popup.class);
-                System.out.println("starting popup");
+                pop.putExtra("lotId","1");
                 startActivityForResult(pop,1);
-                System.out.println("pop.getStringArrayExtra(\"result\");");
-
-                //updateDatabase(1);
             }
         });
-        ImageButton iButton2 = (ImageButton) view.findViewById(R.id.imageCar1);
+        iButton2 = (ImageButton) view.findViewById(R.id.imageCar2);
         iButton2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),popup.class));
-                //updateDatabase(2);
+                Intent pop =  new Intent(getActivity(),popup.class);
+                pop.putExtra("lotId","2");
+                startActivityForResult(pop,1);
             }
         });
-        ImageButton iButton3 = (ImageButton) view.findViewById(R.id.imageCar1);
+        iButton3 = (ImageButton) view.findViewById(R.id.imageCar3);
         iButton3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),popup.class));
-                //updateDatabase(3);
+                Intent pop =  new Intent(getActivity(),popup.class);
+                pop.putExtra("lotId","3");
+                startActivityForResult(pop,1);
             }
         });
-        ImageButton iButton4 = (ImageButton) view.findViewById(R.id.imageCar1);
+        iButton4 = (ImageButton) view.findViewById(R.id.imageCar4);
         iButton4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),popup.class));
-                //updateDatabase(4);
+                Intent pop =  new Intent(getActivity(),popup.class);
+                pop.putExtra("lotId","4");
+                startActivityForResult(pop,1);
             }
         });
-        ImageButton iButton5 = (ImageButton) view.findViewById(R.id.imageCar1);
+        iButton5 = (ImageButton) view.findViewById(R.id.imageCar5);
         iButton5.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),popup.class));
-                //updateDatabase(5);
+                Intent pop =  new Intent(getActivity(),popup.class);
+                pop.putExtra("lotId","5");
+                startActivityForResult(pop,1);
             }
         });
-        ImageButton iButton6 = (ImageButton) view.findViewById(R.id.imageCar1);
+        iButton6 = (ImageButton) view.findViewById(R.id.imageCar6);
         iButton6.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),popup.class));
-                //updateDatabase(6);
+                Intent pop =  new Intent(getActivity(),popup.class);
+                pop.putExtra("lotId","6");
+                startActivityForResult(pop,1);
             }
         });
-
+        occArray = new int[6];
+        timeArray = new String[6];        buttonArray = new ImageButton[6];
+        buttonArray[0] = (ImageButton) view.findViewById(R.id.imageCar1);
+        buttonArray[1] = (ImageButton) view.findViewById(R.id.imageCar2);
+        buttonArray[2] = (ImageButton) view.findViewById(R.id.imageCar3);
+        buttonArray[3] = (ImageButton) view.findViewById(R.id.imageCar4);
+        buttonArray[4] = (ImageButton) view.findViewById(R.id.imageCar5);
+        buttonArray[5] = (ImageButton) view.findViewById(R.id.imageCar6);
+        timeViews = new TextView[6];
+        timeViews[0] = (TextView) view.findViewById(R.id.time1);
+        timeViews[1] = (TextView) view.findViewById(R.id.time2);
+        timeViews[2] = (TextView) view.findViewById(R.id.time3);
+        timeViews[3] = (TextView) view.findViewById(R.id.time4);
+        timeViews[4] = (TextView) view.findViewById(R.id.time5);
+        timeViews[5] = (TextView) view.findViewById(R.id.time6);
+        System.out.println("WTF THE OCCARRAY" + occArray[0]);
+        checkStatus();
         return view;
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        System.out.println("RESULT??????????@@@@@@@@@@@@@@@@@@@");
-        super.onActivityResult(requestCode,resultCode,data);
+        String lotId;
         System.out.println("RESULT??????????@@@@@@@@@@@@@@@@@@@");
         if (requestCode == 1){
             if (resultCode == Activity.RESULT_OK){
                 popResult = data.getStringExtra("result");
+                lotId = data.getStringExtra("lotId");
+                System.out.println("pop result onActvity result is" + popResult);;
+                updateDatabase(lotId,"1",popResult);
+                checkStatus();
+                for(int i = 0; i<6; i++){
+                    if (occArray[i] == 1) {
+                        timeViews[i].setText(timeArray[i]);
+                        buttonArray[i].setImageResource(R.drawable.nop);
+                        buttonArray[i].setClickable(false);
+                    }
+                    else{
+                        timeViews[i].setText("N/A");
+                        buttonArray[i].setImageResource(R.drawable.yesp);
+                        buttonArray[i].setClickable(true);
+                    }
+                }
+                View v = getView();
+                v.invalidate();
             }
         }
     }
@@ -115,16 +163,31 @@ public class fragment1 extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
+    private void checkStatus() {
+        checkButtonStatus checkStatus = new checkButtonStatus();
+        checkStatus.execute();
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
-    private void updateDatabase(int slot,String arrTime, String purTime) {
-        String lotId = "6";
-        String isOccupied = "6";
-        String arrivalTime = "0";
-        String leavingTimer = "0";
-        String purchasedTime = "0";
-        excuteUpdate eUpdate = new excuteUpdate();
-        eUpdate.execute(lotId,isOccupied,arrivalTime,leavingTimer,purchasedTime);
+    private void updateDatabase(String slot, String occ, String purTime) {
+        String times[] = purTime.split(":");
+        int purTimeHour = Integer.parseInt(times[0]) * 60;
+        int purTimeMin = Integer.parseInt(times[1]);
+        String leaveTimeString;
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        String currentDateTimeString = format.format(new Date());
+        try {
+            Date date = format.parse(currentDateTimeString);
+            final Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            calendar.add(Calendar.MINUTE,purTimeHour+ purTimeMin);
+            leaveTimeString = format.format(calendar.getTime());
+            System.out.println("current time is " + currentDateTimeString + "the slot id is " +slot+ "THE TIME PUR" + purTime + "after time" + leaveTimeString);
+            excuteUpdate eUpdate = new excuteUpdate();
+            eUpdate.execute(slot,occ,currentDateTimeString,purTime,leaveTimeString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private class excuteUpdate extends AsyncTask<String, Void, String> {
@@ -135,12 +198,12 @@ public class fragment1 extends Fragment {
 
         @Override
         protected String doInBackground(String... params) {
-            String reg_url = "http://192.168.0.11/client/insertData.php";
+            String reg_url = "http://192.168.0.11/client/update.php";
             String lotId = params[0];
             String isOccupied = params[1];
             String arrivalTime = params[2];
-            String leavingTime = params[3];
-            String purchasedTime = params[4];
+            String purchasedTime = params[3];
+            String leavingTime = params[4];
             try {
                 URL url = new URL(reg_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -150,7 +213,10 @@ public class fragment1 extends Fragment {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS,"UTF-8"));
                 System.out.println(lotId + isOccupied);
                 String data = URLEncoder.encode("lotId","UTF-8") + "=" + URLEncoder.encode(lotId,"UTF-8") + "&"
-                        + URLEncoder.encode("isOccupied","UTF-8") + "=" + URLEncoder.encode(isOccupied,"UTF-8");
+                        + URLEncoder.encode("isOccupied","UTF-8") + "=" + URLEncoder.encode(isOccupied,"UTF-8") + "&"
+                        + URLEncoder.encode("arrivalTime","UTF-8") + "=" + URLEncoder.encode(arrivalTime,"UTF-8")+ "&"
+                        + URLEncoder.encode("purchasedTime","UTF-8") + "=" + URLEncoder.encode(purchasedTime,"UTF-8") + "&"
+                        + URLEncoder.encode("leavingTime","UTF-8") + "=" + URLEncoder.encode(leavingTime,"UTF-8");
                 System.out.println("THE DATA IS" + data);
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
@@ -164,8 +230,6 @@ public class fragment1 extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
             return null;
         }
 
@@ -177,5 +241,89 @@ public class fragment1 extends Fragment {
         protected void onPostExecute(String result) {
             //Toast.makeText(getActivity(),result,Toast.LENGTH_LONG).show();
         }
+    }
+    private class checkButtonStatus extends AsyncTask<Void, Void, String> {
+        String JSON_STRING;
+        String json_url;
+        @Override
+        protected void onPreExecute()
+        {
+            json_url = "http://192.168.0.11/client/getdata.php";
+        }
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL(json_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((JSON_STRING = bufferedReader.readLine()) != null){
+                    stringBuilder.append(JSON_STRING+"\n");
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result){
+            System.out.println(result);
+            parseJSON(result);
+        }
+
+    }
+    private void parseJSON(String jsonString) {
+        JSONObject jsonObject;
+        JSONArray jsonArray;
+        if(jsonString == null) {
+            Toast.makeText(getActivity(),"Json dose not exist", Toast.LENGTH_LONG).show();
+        }
+        else{
+            try {
+                jsonObject = new JSONObject(jsonString);
+                jsonArray = jsonObject.getJSONArray("server_response");
+                int count = 0;
+                String isOcc;
+                String leavingTime;
+                while(count<jsonArray.length()){
+                    JSONObject jo = jsonArray.getJSONObject(count);
+                    isOcc = jo.getString("isOccupied");
+                    leavingTime = jo.getString("leavingTime");
+                    timeArray[count] = leavingTime;
+                    occArray[count] = Integer.parseInt(isOcc);
+                    count = count + 1;
+                }
+                System.out.println("INSIDE UPDATE IS" + timeArray[0] +" AND " + occArray[1]);
+                for(int i = 0; i<6; i++){
+                    if (occArray[i] == 1) {
+                        String oldTimeString = timeArray[i];
+                        Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(oldTimeString);
+                        String newDateString = new SimpleDateFormat("HH:mm").format(date);
+                        timeViews[i].setText(newDateString);
+                        buttonArray[i].setImageResource(R.drawable.nop);
+                        buttonArray[i].setClickable(false);
+                    }
+                    else{
+                        timeViews[i].setText("N/A");
+                        buttonArray[i].setImageResource(R.drawable.yesp);
+                        buttonArray[i].setClickable(true);
+                    }
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

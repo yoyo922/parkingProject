@@ -12,34 +12,39 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textSize="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
         <TextView
             android:id="@+id/textItemOcc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textSize="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
         <TextView
             android:id="@+id/textItemArr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textSize="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
         <TextView
             android:id="@+id/textItemPur"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textSize="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
         <TextView
             android:id="@+id/textItemLeave"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textSize="10dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"/>
     </LinearLayout>
 </LinearLayout>

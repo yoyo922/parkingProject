@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.peter.parkinglotapp.R;
@@ -36,6 +37,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -54,6 +56,8 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
     GoogleMap mGoogleMap;
     MapView mMapView;
     View mView;
+    private static TextView duration;
+    private static TextView distance;
     private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
     private static final String API_KEY = "AIzaSyDiwNIP2MDIOgnWHtgFrQb_GmDJHsDBMjY";
     private String destination = "43.530660,-80.228900";
@@ -69,6 +73,8 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
         // Inflate the layout for this fragment
         mView  = inflater.inflate(R.layout.fragment_fragment3, container, false);
         Button goButton = (Button) mView.findViewById(R.id.goButton);
+        distance = (TextView) mView.findViewById(R.id.distance);
+        duration = (TextView) mView.findViewById(R.id.duration);
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,6 +189,7 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
             JSONObject jsonEndLocation = jsonLeg.getJSONObject("end_location");
             JSONObject jsonStartLocation = jsonLeg.getJSONObject("start_location");
 
+
             route.distance = new Distance(jsonDistance.getString("text"),jsonDistance.getInt("value"));
             route.duration = new Duration(jsonDuration.getString("text"),jsonDuration.getInt("value"));
             route.endAddress = jsonLeg.getString("end_address");
@@ -191,6 +198,10 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
             route.endLocation = new LatLng(jsonEndLocation.getDouble("lat"),jsonEndLocation.getDouble("lng"));
             route.points = decodePolyLine(overview_polylineJson.getString("points"));
             routes.add(route);
+
+            distance.setText(route.distance.text);
+            duration.setText(route.duration.text);
+
         }
         drawRoutes(routes);
     }

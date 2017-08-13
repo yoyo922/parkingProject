@@ -14,7 +14,6 @@ import layout.fragment1;
 import layout.fragment3;
 
 public class MainActivity extends AppCompatActivity {
-    String popResult;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,17 +25,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_place,defaultFrag);
         transaction.commit();
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        System.out.println("RESULT??????????@@@@@@@@@@@@@@@@@@@");
-        super.onActivityResult(requestCode,resultCode,data);
-        if (requestCode == 1){
-            if (resultCode == Activity.RESULT_OK){
-                popResult = data.getStringExtra("result");
-            }
-        }
     }
 
     public void changeFragment(View view) {

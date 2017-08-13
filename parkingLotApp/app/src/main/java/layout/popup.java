@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.peter.parkinglotapp.R;
 
@@ -28,18 +29,27 @@ public class popup extends Activity {
         editText = (EditText) findViewById(R.id.purTime);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-        editText.setText("wtf is it working or not");
+        editText.setHint("HH:MM");
         final int width = dm.widthPixels;
         final int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * 0.5), (int) (height * 0.2));
+        getWindow().setLayout((int) (width * 0.5), (int)(height * 0.3));
         done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("result",editText.getText());
-                setResult(Activity.RESULT_OK,intent);
-                System.out.println("sending results from popup");
-                finish();
+                String result;
+                String lotId = getIntent().getStringExtra("lotId");
+                result = editText.getText().toString();
+                if (result.contains(":")) {
+                    Intent intent = new Intent();
+                    intent.putExtra("result", result);
+                    intent.putExtra("lotId", lotId);
+                    setResult(Activity.RESULT_OK, intent);
+                    System.out.println("sending results from popup");
+                    finish();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"invalid format",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
