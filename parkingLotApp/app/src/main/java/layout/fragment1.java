@@ -4,20 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.support.v4.app.Fragment;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.peter.parkinglotapp.MainActivity;
 import com.example.peter.parkinglotapp.R;
 
 import org.json.JSONArray;
@@ -61,16 +55,22 @@ public class fragment1 extends Fragment {
         iButton1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(),popup.class);
-                pop.putExtra("lotId","1");
-                startActivityForResult(pop,1);
+                if(occArray[0] == 0) {
+                    Intent pop = new Intent(getActivity(), popupReserve.class);
+                    pop.putExtra("lotId", "1");
+                    startActivityForResult(pop, 1);
+                }
+                else
+                {
+
+                }
             }
         });
         iButton2 = (ImageButton) view.findViewById(R.id.imageCar2);
         iButton2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(),popup.class);
+                Intent pop =  new Intent(getActivity(), popupReserve.class);
                 pop.putExtra("lotId","2");
                 startActivityForResult(pop,1);
             }
@@ -79,7 +79,7 @@ public class fragment1 extends Fragment {
         iButton3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(),popup.class);
+                Intent pop =  new Intent(getActivity(), popupReserve.class);
                 pop.putExtra("lotId","3");
                 startActivityForResult(pop,1);
             }
@@ -88,7 +88,7 @@ public class fragment1 extends Fragment {
         iButton4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(),popup.class);
+                Intent pop =  new Intent(getActivity(), popupReserve.class);
                 pop.putExtra("lotId","4");
                 startActivityForResult(pop,1);
             }
@@ -97,7 +97,7 @@ public class fragment1 extends Fragment {
         iButton5.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(),popup.class);
+                Intent pop =  new Intent(getActivity(), popupReserve.class);
                 pop.putExtra("lotId","5");
                 startActivityForResult(pop,1);
             }
@@ -106,13 +106,14 @@ public class fragment1 extends Fragment {
         iButton6.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(),popup.class);
+                Intent pop =  new Intent(getActivity(), popupReserve.class);
                 pop.putExtra("lotId","6");
                 startActivityForResult(pop,1);
             }
         });
         occArray = new int[6];
-        timeArray = new String[6];        buttonArray = new ImageButton[6];
+        timeArray = new String[6];
+        buttonArray = new ImageButton[6];
         buttonArray[0] = (ImageButton) view.findViewById(R.id.imageCar1);
         buttonArray[1] = (ImageButton) view.findViewById(R.id.imageCar2);
         buttonArray[2] = (ImageButton) view.findViewById(R.id.imageCar3);
@@ -309,12 +310,12 @@ public class fragment1 extends Fragment {
                         String newDateString = new SimpleDateFormat("HH:mm").format(date);
                         timeViews[i].setText(newDateString);
                         buttonArray[i].setImageResource(R.drawable.nop);
-                        buttonArray[i].setClickable(false);
+                        //buttonArray[i].setClickable(false);
                     }
                     else{
                         timeViews[i].setText("N/A");
                         buttonArray[i].setImageResource(R.drawable.yesp);
-                        buttonArray[i].setClickable(true);
+                        //buttonArray[i].setClickable(true);
                     }
                 }
 

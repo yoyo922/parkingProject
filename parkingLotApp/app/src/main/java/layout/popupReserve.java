@@ -18,7 +18,7 @@ import java.util.Date;
  * Created by peter on 02/08/17.
  */
 
-public class popup extends Activity {
+public class popupReserve extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -32,7 +32,7 @@ public class popup extends Activity {
         editText.setHint("HH:MM");
         final int width = dm.widthPixels;
         final int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * 0.5), (int)(height * 0.3));
+        getWindow().setLayout((int) (width * 0.5), (int)(height * 0.2));
         done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class popup extends Activity {
                     intent.putExtra("result", result);
                     intent.putExtra("lotId", lotId);
                     setResult(Activity.RESULT_OK, intent);
-                    System.out.println("sending results from popup");
+                    System.out.println("sending results from popupReserve");
                     finish();
                 }
                 else {
