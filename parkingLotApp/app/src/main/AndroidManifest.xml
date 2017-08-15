@@ -19,6 +19,10 @@
         </activity>
         <activity android:name="layout.popupReserve"
                   android:theme="@style/AppTheme.CustomTheme">
+        </activity>\
+
+        <activity android:name="layout.popupLeave"
+            android:theme="@style/AppTheme.CustomTheme">
         </activity>
 
         <!-- Maps Android Key-->

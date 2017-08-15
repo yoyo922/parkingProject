@@ -51,66 +51,6 @@ public class fragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragment1, container, false);
-        iButton1 = (ImageButton) view.findViewById(R.id.imageCar1);
-        iButton1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                if(occArray[0] == 0) {
-                    Intent pop = new Intent(getActivity(), popupReserve.class);
-                    pop.putExtra("lotId", "1");
-                    startActivityForResult(pop, 1);
-                }
-                else
-                {
-
-                }
-            }
-        });
-        iButton2 = (ImageButton) view.findViewById(R.id.imageCar2);
-        iButton2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(), popupReserve.class);
-                pop.putExtra("lotId","2");
-                startActivityForResult(pop,1);
-            }
-        });
-        iButton3 = (ImageButton) view.findViewById(R.id.imageCar3);
-        iButton3.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(), popupReserve.class);
-                pop.putExtra("lotId","3");
-                startActivityForResult(pop,1);
-            }
-        });
-        iButton4 = (ImageButton) view.findViewById(R.id.imageCar4);
-        iButton4.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(), popupReserve.class);
-                pop.putExtra("lotId","4");
-                startActivityForResult(pop,1);
-            }
-        });
-        iButton5 = (ImageButton) view.findViewById(R.id.imageCar5);
-        iButton5.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(), popupReserve.class);
-                pop.putExtra("lotId","5");
-                startActivityForResult(pop,1);
-            }
-        });
-        iButton6 = (ImageButton) view.findViewById(R.id.imageCar6);
-        iButton6.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent pop =  new Intent(getActivity(), popupReserve.class);
-                pop.putExtra("lotId","6");
-                startActivityForResult(pop,1);
-            }
-        });
         occArray = new int[6];
         timeArray = new String[6];
         buttonArray = new ImageButton[6];
@@ -129,6 +69,104 @@ public class fragment1 extends Fragment {
         timeViews[5] = (TextView) view.findViewById(R.id.time6);
         System.out.println("WTF THE OCCARRAY" + occArray[0]);
         checkStatus();
+        iButton1 = (ImageButton) view.findViewById(R.id.imageCar1);
+        iButton1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if(occArray[0] == 0) {
+                    Intent popRes = new Intent(getActivity(), popupReserve.class);
+                    popRes.putExtra("lotId", "1");
+                    startActivityForResult(popRes, 1);
+                }
+                else
+                {
+                    Intent popClear = new Intent(getActivity(),popupLeave.class);
+                    popClear.putExtra("lotId","1");
+                    startActivity(popClear);
+
+                }
+            }
+        });
+        iButton2 = (ImageButton) view.findViewById(R.id.imageCar2);
+        iButton2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if(occArray[1] == 0) {
+                    Intent popRes = new Intent(getActivity(), popupReserve.class);
+                    popRes.putExtra("lotId", "2");
+                    startActivityForResult(popRes, 1);
+                }
+                else{
+                    Intent popClear = new Intent(getActivity(),popupLeave.class);
+                    popClear.putExtra("lotId","2");
+                    startActivity(popClear);
+                }
+            }
+        });
+        iButton3 = (ImageButton) view.findViewById(R.id.imageCar3);
+        iButton3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if(occArray[2] == 0) {
+                    Intent popRes = new Intent(getActivity(), popupReserve.class);
+                    popRes.putExtra("lotId", "3");
+                    startActivityForResult(popRes, 1);
+                }
+                else{
+                    Intent popClear = new Intent(getActivity(),popupLeave.class);
+                    popClear.putExtra("lotId","3");
+                    startActivity(popClear);
+                }
+            }
+        });
+        iButton4 = (ImageButton) view.findViewById(R.id.imageCar4);
+        iButton4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if(occArray[3] == 0) {
+                    Intent popRes = new Intent(getActivity(), popupReserve.class);
+                    popRes.putExtra("lotId", "4");
+                    startActivityForResult(popRes, 1);
+                }
+                else{
+                    Intent popClear = new Intent(getActivity(),popupLeave.class);
+                    popClear.putExtra("lotId","4");
+                    startActivity(popClear);
+                }
+            }
+        });
+        iButton5 = (ImageButton) view.findViewById(R.id.imageCar5);
+        iButton5.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if(occArray[4] == 0) {
+                    Intent popRes = new Intent(getActivity(), popupReserve.class);
+                    popRes.putExtra("lotId", "5");
+                    startActivityForResult(popRes, 1);
+                }
+                else {
+                    Intent popClear = new Intent(getActivity(),popupLeave.class);
+                    popClear.putExtra("lotId","5");
+                    startActivity(popClear);
+                }
+            }
+        });
+        iButton6 = (ImageButton) view.findViewById(R.id.imageCar6);
+        iButton6.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                if (occArray[5] == 0) {
+                    Intent popRes = new Intent(getActivity(), popupReserve.class);
+                    popRes.putExtra("lotId", "6");
+                    startActivityForResult(popRes, 1);
+                }
+                else{
+                    Intent popClear = new Intent(getActivity(),popupLeave.class);
+                    popClear.putExtra("lotId","6");
+                    startActivity(popClear);
+                }
+            }
+        });
         return view;
     }
     @Override
@@ -147,12 +185,12 @@ public class fragment1 extends Fragment {
                     if (occArray[i] == 1) {
                         timeViews[i].setText(timeArray[i]);
                         buttonArray[i].setImageResource(R.drawable.nop);
-                        buttonArray[i].setClickable(false);
+                        //buttonArray[i].setClickable(false);
                     }
                     else{
                         timeViews[i].setText("N/A");
                         buttonArray[i].setImageResource(R.drawable.yesp);
-                        buttonArray[i].setClickable(true);
+                        //buttonArray[i].setClickable(true);
                     }
                 }
                 View v = getView();
@@ -184,14 +222,14 @@ public class fragment1 extends Fragment {
             calendar.add(Calendar.MINUTE,purTimeHour+ purTimeMin);
             leaveTimeString = format.format(calendar.getTime());
             System.out.println("current time is " + currentDateTimeString + "the slot id is " +slot+ "THE TIME PUR" + purTime + "after time" + leaveTimeString);
-            excuteUpdate eUpdate = new excuteUpdate();
+            executeUpdate eUpdate = new executeUpdate();
             eUpdate.execute(slot,occ,currentDateTimeString,purTime,leaveTimeString);
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
 
-    private class excuteUpdate extends AsyncTask<String, Void, String> {
+    private class executeUpdate extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
 

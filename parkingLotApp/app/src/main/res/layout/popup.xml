@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:text = "Reserve"
         android:gravity="center_horizontal"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:layout_weight="1"
         />
     <TextView
