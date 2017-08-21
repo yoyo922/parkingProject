@@ -82,7 +82,7 @@ public class fragment1 extends Fragment {
                 {
                     Intent popClear = new Intent(getActivity(),popupLeave.class);
                     popClear.putExtra("lotId","1");
-                    startActivity(popClear);
+                    startActivityForResult(popClear,2);
 
                 }
             }
@@ -99,7 +99,7 @@ public class fragment1 extends Fragment {
                 else{
                     Intent popClear = new Intent(getActivity(),popupLeave.class);
                     popClear.putExtra("lotId","2");
-                    startActivity(popClear);
+                    startActivityForResult(popClear,2);
                 }
             }
         });
@@ -115,7 +115,7 @@ public class fragment1 extends Fragment {
                 else{
                     Intent popClear = new Intent(getActivity(),popupLeave.class);
                     popClear.putExtra("lotId","3");
-                    startActivity(popClear);
+                    startActivityForResult(popClear,2);
                 }
             }
         });
@@ -131,7 +131,7 @@ public class fragment1 extends Fragment {
                 else{
                     Intent popClear = new Intent(getActivity(),popupLeave.class);
                     popClear.putExtra("lotId","4");
-                    startActivity(popClear);
+                    startActivityForResult(popClear,2);
                 }
             }
         });
@@ -147,7 +147,7 @@ public class fragment1 extends Fragment {
                 else {
                     Intent popClear = new Intent(getActivity(),popupLeave.class);
                     popClear.putExtra("lotId","5");
-                    startActivity(popClear);
+                    startActivityForResult(popClear,2);
                 }
             }
         });
@@ -163,7 +163,7 @@ public class fragment1 extends Fragment {
                 else{
                     Intent popClear = new Intent(getActivity(),popupLeave.class);
                     popClear.putExtra("lotId","6");
-                    startActivity(popClear);
+                    startActivityForResult(popClear,2);
                 }
             }
         });
@@ -193,10 +193,13 @@ public class fragment1 extends Fragment {
                         //buttonArray[i].setClickable(true);
                     }
                 }
-                View v = getView();
-                v.invalidate();
             }
         }
+        else{
+            checkStatus();
+        }
+        View v = getView();
+        v.invalidate();
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

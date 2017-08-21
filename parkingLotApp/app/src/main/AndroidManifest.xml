@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name="layout.popupReserve"
-                  android:theme="@style/AppTheme.CustomTheme">
+                  android:theme="@style/AppTheme.CustomTheme"
+                  android:windowSoftInputMode="adjustResize">
         </activity>\
 
         <activity android:name="layout.popupLeave"

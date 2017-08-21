@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,7 +34,7 @@ public class popupReserve extends Activity {
         editText.setHint("HH:MM");
         final int width = dm.widthPixels;
         final int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * 0.5), (int)(height * 0.2));
+        getWindow().setLayout((int) (width * 0.5), (int)(height * 0.3));
         done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

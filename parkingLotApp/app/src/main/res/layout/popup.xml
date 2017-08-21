@@ -5,30 +5,29 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="10dp"
         android:text = "Reserve"
         android:gravity="center_horizontal"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:layout_weight="1"
         />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="10dp"
         android:text = "Enter purchased Time"
         android:gravity="center"
         android:layout_weight="1"
         />
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="10dp"
         android:id ="@+id/purTime"
         android:gravity="center"
         android:layout_weight="1"
         />
-
     <Button
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:id ="@+id/doneButton"
         android:text ="Done"/>
 </LinearLayout>
