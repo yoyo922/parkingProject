@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
         String username = "peter";
         String password = "password";
-        Fragment defaultFrag = new fragment1();
+        Fragment defaultFrag = new fragment3();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_place,defaultFrag);
         transaction.commit();
