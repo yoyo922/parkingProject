@@ -67,6 +67,7 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
     private LocationManager locationManager;
     private LocationListener locationListener;
     private String currentLocation;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,8 +82,21 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
                 sendRequest();
             }
         });
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        /*locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        if (locationManager == null) {
+            System.out.println("its not fuckign working manager");
+        }
+        else{
+            System.out.println("its working manager");
+        }
         Location buffLocation = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
+        if (buffLocation == null) {
+            System.out.println("its not fuckign working");
+        }
+        else{
+            System.out.println("its working");
+        }*/
+        Location buffLocation = getLastKnownLocation();
         currentLocation = buffLocation.getLatitude() + "," + buffLocation.getLongitude();
         locationListener = new LocationListener() {
             @Override
@@ -111,6 +125,24 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
         locationManager.requestLocationUpdates("gps",5000,0,locationListener);
         return mView;
     }
+
+    private Location getLastKnownLocation() {
+        locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            Location l = locationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
+    }
+
     public void sendRequest(){
         try {
             System.out.println(createUrl());
@@ -120,7 +152,6 @@ public class fragment3 extends Fragment implements OnMapReadyCallback {
         }
 
     }
-
     private String createUrl() throws UnsupportedEncodingException {;
 
         return DIRECTION_URL_API + "origin=" + currentLocation + "&destination=" + destination + "&key=" + API_KEY;
